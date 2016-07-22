@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Apollo - World Editor</title>
+</head>
+<body>
+    <div id="Grid">
+        <label class="switch">
+            <input type="checkbox">
+            <div class="slider"></div>
+        </label>
+    </div>
+    <!-- Shaders -->
+    <script type="x-shader/x-vertex" id="vertexShader">
+    varying vec2 pos;
+
+    void main() {
+        pos = position.xy;
+        gl_Position = projectionMatrix *
+        modelViewMatrix *
+        vec4(position,1.0);
+    }
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentShader">
+    /**
+    * Set the colour to a lovely pink.
+    * Note that the color is a 4D Float
+    * Vector, R,G,B and A and each part
+    * runs from 0.0 to 1.0
+    */
+    varying vec2 pos;
+    void main() {
+        vec2 g = pos.xy;
+        g += vec2(5);
+        g *= 8.0 / 10.0;
+        g.x += mod(ceil(g.y), 2.0);
+        if (mod(ceil(g.x), 2.0) == 1.0) {
+            gl_FragColor = vec4(1.0,  // R
+                1.0,  // G
+                1.0,  // B
+                1.0); // A
+        } else {
+            gl_FragColor = vec4(0.5, 0.3, 0.3, 1.0);
+        }
+    }
+    </script>
+    <script src="js/three.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="js/Test.js"></script>
+</body>
+</html>

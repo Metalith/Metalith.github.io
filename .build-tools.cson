@@ -1,0 +1,34 @@
+providers: [
+  {
+    key: "bt"
+    config:
+      commands: [
+        {
+          project: "/home/caleb/Documents/GameDev/Projects/Web App/Chess"
+          source: "/home/caleb/Documents/GameDev/Projects/Web App/Chess/.build-tools.cson"
+          name: "Chess"
+          command: "electron main.js"
+          wd: "."
+          env: {}
+          modifier:
+            shell:
+              command: "bash -c"
+          environment:
+            name: "child_process"
+            config:
+              stdoe: "both"
+          stdout:
+            pipeline: []
+          stderr:
+            pipeline: []
+          output:
+            console:
+              close_success: true
+              queue_in_buffer: true
+              colors: false
+              stdin: false
+          version: 2
+        }
+      ]
+  }
+]
