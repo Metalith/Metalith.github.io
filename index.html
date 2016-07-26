@@ -38,8 +38,8 @@
         vec2 g = pos.xy;
         g += vec2(5);
         g *= 8.0 / 10.0;
-        g.x += mod(ceil(g.y), 2.0);
-        if (int(mod(ceil(g.x), 2.0)) == 1) {
+        g += ceil(mod(g.y, 2.0));
+        if (ceil(mod(g.x, 2.0)) == 1.0) {
             gl_FragColor = vec4(1.0,  // R
                 1.0,  // G
                 1.0,  // B

@@ -12,10 +12,6 @@ renderer.domElement.style.zIndex = -1;
 renderer.setClearColor( 0x0e1115, 1 );
 document.getElementById("Grid").appendChild( renderer.domElement );
 
-var helper = new THREE.GridHelper( 5, 8, 0x1a1a1a, 0x1a1a1a);
-helper.position.y = 0;
-scene.add( helper );
-
 
 var geometry = new THREE.PlaneBufferGeometry( 10, 10 );
 //Plane material
