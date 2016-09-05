@@ -1,0 +1,128 @@
+.Node {
+    display: inline-table;
+    position: absolute;
+    font-family: "Lato thin";
+    font-size: 16px;
+    text-align: center;
+
+    background-color: #cc443e;
+    color: white;
+
+    border-radius: 0.75em;
+    padding: 3px 22px 10px 22px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently */
+    cursor: move;
+    white-space: nowrap;
+}
+
+.removeNodeButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+
+    stroke-width: 25px;
+    stroke: white;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+}
+
+.Node:hover .removeNodeButton {
+    opacity: 1.0;
+    transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+}
+
+.NodeName {
+    font-family: "Lato light";
+    text-align: Center;
+    /*position: relative;*/
+}
+
+.Input {
+    float: left;
+    display: inline-block;
+}
+
+.Center {
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+    text-align: center;
+}
+
+.Output {
+    float: right;
+    display: inline-block;
+}
+
+.Field {
+    position: relative;
+    text-align: left;
+    cursor: default;
+}
+
+.Field.hov {
+    color: orange;
+}
+
+
+
+.Handle {
+    position: absolute;
+    content: "";
+    top: 2px;
+    height: 12px;
+    width: 12px;
+    stroke: white;
+    stroke-width: 50;
+    fill: white;
+}
+
+.Output > .Field > .Handle {
+    margin-left: 5px;
+    left: 100%;
+}
+
+.Input > .Field > .Handle {
+    margin-right: 5px;
+    right: 100%;
+}
+
+
+input[type=number] {
+    border: none;
+    float: left;
+    width: 100px;
+    height: 20px;
+    border-bottom: solid 1px #c9c9c9;
+    background-color: #cc9999;
+    font-family: "Lato";
+    color: white;
+    box-sizing: border-box;
+    vertical-align:middle;
+    -moz-appearance: textfield;
+     -webkit-appearance: none;
+     appearance: none;
+    margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input:focus {
+    border: solid 1px #FFF;
+}
