@@ -35,15 +35,15 @@ class Background extends React.Component {
         // this.scene.add(this.output);
         // this.output.position.y = 0.1;
         var aspect = window.innerWidth / window.innerHeight;
-        var d = window.innerHeight;
-        this.camera = new THREE.OrthographicCamera(d * aspect / - 2, d * aspect / 2, d / 2, d / - 2, 1, 4000);
+        var d = 20.0;
+        this.camera = new THREE.OrthographicCamera(d * aspect / - 2, d * aspect / 2, d / 2, d / - 2, 0.1, 100);
         this.camera.position.set(0, d, 0);
         this.camera.lookAt(this.scene.position);
         this.camera.rotation.order = 'YXZ';
 
 
         let size = Math.max(d * aspect, d);
-        let geometry = new THREE.PlaneBufferGeometry(size * 2, size * 2);
+        let geometry = new THREE.PlaneBufferGeometry(size * 4, size * 4);
 
         let material = new THREE.ShaderMaterial({
             vertexShader: document.getElementById( 'vertexShader' ).textContent,
@@ -60,7 +60,7 @@ class Background extends React.Component {
         });
         size = Math.min(d * aspect, d);
         material.extensions.derivatives = true;
-        geometry = new THREE.BoxBufferGeometry( size, size, size/5, 64, 64, 1 );
+        geometry = new THREE.BoxBufferGeometry( size / 1.25, size / 1.25, 1.0, 64, 64, 1 );
         this.output = new THREE.Mesh(geometry, material);
         this.output.rotation.x = -1.57;
         this.scene.add(this.output);
@@ -94,18 +94,20 @@ class Background extends React.Component {
 
     renderScene() {
         if (this.transition) {
-            let d = window.innerHeight;
+            let d = 20.0;
             if (this.props.View == "3D") {
                 this.camera.position.x += d / 75.0;
+                this.camera.position.y += d / 300.0;
                 this.camera.position.z += d / 75.0;
                 this.camera.rotation.y +=  Math.PI / 300;
                 this.camera.rotation.x += ( Math.atan( - 1 / Math.sqrt( 2 ) ) - (- Math.PI / 2)) / 75;
-                if (this.camera.position.x >= window.innerHeight)
+                if (this.camera.position.x >= d)
                     this.transition = false;
 
             }
             else if (this.props.View == "2D") {
                 this.camera.position.x -= d / 75.0;
+                this.camera.position.y -= d / 300.0;
                 this.camera.position.z -= d / 75.0;
                 this.camera.rotation.y -=  Math.PI / 300;
                 this.camera.rotation.x -= ( Math.atan( - 1 / Math.sqrt( 2 ) ) - (- Math.PI / 2)) / 75;
@@ -118,8 +120,10 @@ class Background extends React.Component {
     }
 
     onWindowResize() {
-        let w = window.innerWidth;
-        let h = window.innerHeight;
+        var aspect = window.innerWidth / window.innerHeight;
+        var d = 20.0;
+        let w = d*aspect;
+        let h = d;
         this.camera.left = w / -2;
         this.camera.right = w / 2;
         this.camera.top = h / 2;
@@ -127,9 +131,9 @@ class Background extends React.Component {
         this.camera.updateProjectionMatrix();
 
         let size = Math.max(w, h);
-        this.background.geometry = new THREE.PlaneBufferGeometry(size * 2.5, size * 2.5);
-        size = Math.min(window.innerWidth, window.innerHeight);
-        this.output.geometry = new THREE.PlaneBufferGeometry(size, size, 256,  256);
+        this.background.geometry = new THREE.PlaneBufferGeometry(size * 4, size * 4);
+        size = Math.min(w, h);
+        this.output.geometry = new THREE.BoxBufferGeometry( size / 1.25, size / 1.25, 1.0, 64, 64, 1 );
         this.background.geometry.needsUpdate = true;
         this.background.geometry.attributes.position.needsUpdate = true;
         this.renderer.setSize(window.innerWidth, window.innerHeight);
