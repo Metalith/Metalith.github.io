@@ -169,7 +169,7 @@ vec3 mod289(vec3 x)
             	ld /= len; // Normalizing the light-to-surface, aka light-direction, vector.
                 float diffuse = max( 0.0, dot(surfNormal, ld) ); //The object's diffuse value, which depends on the angle that the light hits the object.
                 vec3 Color = vec3(0.4, 0.6, 1.0);
-                gl_FragColor = vec4(Color * diffuse, 1.0);
+                gl_FragColor = vec4(vec3(sp.y), 1.0);
             } else {
 
             	vec3 forward = vec3(0, -1, 0);
