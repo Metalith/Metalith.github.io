@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "watch": "watchify js/App.js -t babelify -o bundle.js --debug --verbose",
-    "production": "babelify"
+    "watch": "watchify js/App.js -t babelify -o bundle.js --debug --verbose"
   },
   "dependencies": {
     "react": "^15.3.0",
