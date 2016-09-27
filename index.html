@@ -119,9 +119,14 @@ float snoise(vec3 v)
   return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), 
                                 dot(p2,x2), dot(p3,x3) ) );
   }
+  
+  	float rand(vec2 co) {
+   		return fract(sin(dot(co.xy,vec2(12.9898,78.233))) * 43758.5453);
+	}
 
         float scene(vec3 p) {
-            return p.y - snoise(vec3(p.x, p.z, 0.0));
+		return p.y - rand(vec2(p.x, p.z));
+		//return p.y - snoise(vec3(p.x, p.z, 0.0));
             /*return p.y - snoise(vec2(p.x));*/
              /*return length(p)-1.0;*/
         }
