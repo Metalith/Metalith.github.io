@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Actions from '../Actions';
-import Menu from '../components/Menu'
+import NodeMenu from '../components/NodeMenu'
 import ViewToggle from '../components/ViewToggle'
 import Nodes from './Nodes'
 import Background from './Background'
 import Connectors from './Connectors'
+import Code from './Code'
 class Editor extends React.Component {
     constructor(props) {
         super(props)
@@ -79,7 +80,8 @@ class Editor extends React.Component {
             <Nodes globalOffset={this.state.pos}/>
             <Connectors />
             <ViewToggle />
-            <Menu
+            <Code    />
+            <NodeMenu
                 hide={this.hideContextMenu}
                 show={this.state.showContextMenu}
                 pos={this.state.menuPos}

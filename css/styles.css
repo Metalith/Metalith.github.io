@@ -10,32 +10,152 @@
     background: #0e1112;
 }
 
+#Code {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+#OpenCode {
+    float:left;
+    color: white;
+    padding-left: 25px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-top: 3px;
+    background: #bbb;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently */
+    cursor: pointer;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 0px 0.75em 0px 0px;
+}
+
+#OpenCode:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height:2px;
+    width: 15px;
+    background: #FFFFFF;
+    left: 5px;
+    top: 5px;
+    box-shadow: 0 5px 0 #FFF, 0 10px 0 #FFF;
+}
+
+.CodeButton {
+    float: left;
+    color: white;
+    padding-left: 10px;
+    padding-bottom: 2px;
+    padding-right: 10px;
+    padding-top: 3px;
+    background: #bbb;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently */
+    cursor: pointer;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    border-radius: 0.75em 0.75em 0px 0px;
+}
+
 .Connectors {
     position: absolute;
     pointer-events:none;
 }
 
-.context-menu {
+.NodeMenu {
     position: absolute;
-    display: inline-block;
-    min-width: 13em;
-    max-width: 26em;
-
-    padding: .25em 0;
-    font-family: inherit;
-    font-size: inherit;
-    list-style-type: none;
+    padding: 5px;
     background: #999;
-    overflow: hidden;
     border-radius: .2em;
     color: white;
-    font-family: Lato regular, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
+}
+
+.NodeMenu > :first-child {
+    padding-left:1.25em;
+}
+
+.NodeMenuItem {
+    position:relative;
+    background-color: #999999;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    font-size: 16px;
+    text-align: left;
+    margin-left: -5px;
+    padding-left: 5px;
+    margin-right: -5px;
+}
+
+.NodeMenuItem.Arrow {
+      background-image:
+        linear-gradient(-45deg, transparent 50%, white 50%),
+        linear-gradient(45deg, white 50%, transparent 50%);
+      background-position:
+        calc(100% - 8px) calc(9px),
+        calc(100% - 8px) calc(2px);
+      background-size:
+        7px 7px,
+        7px 7px;
+      background-repeat: no-repeat;
+      box-sizing:border-box;
+}
+
+.NodeMenuItem.Seperator {
+    margin-left: -5px;
+    padding-left: 0px;
+    margin-right: -5px;
+}
+
+.NodeMenuItem.Seperator:hover {
+    background-color: #FFF;
+}
+
+.NodeMenuItem:hover {
+    background-color: #333355;
+    color: white;
+}
+
+.NodeMenuItem:hover > .SubMenu {
+    display:block;
+}
+
+.SubMenu {
+    min-width: 5em;
+    padding: 5px;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -5px;
+    background: #999;
+    border-radius: .2em;
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
 }
 
 .context-menu-item {
     background-color: #999999;
-    font-family: Lato light, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: white;
     font-size: 16px;
     text-align: left;
@@ -46,44 +166,11 @@
 }
 
 .show {
-    -webkit-animation-name: show-anim; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
-    animation-name: show-anim;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-}
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes show-anim {
-    from {max-height: 0px;}
-    to {max-height: 500px;}
-}
-
-/* Standard syntax */
-@keyframes show-anim {
-    from {max-height: 0px; }
-    to {max-height: 500px; }
+    display: block;
 }
 
 .hide {
-    max-height: 0px;
-    padding: 0px;
-    -webkit-animation-name: hide-anim; /* Chrome, Safari, Opera */*/
-    -webkit-animation-duration: 0.07s; /* Chrome, Safari, Opera */
-    animation: hide-anim 0.07s ease-in;
-}
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes hide-anim {
-    0% {max-height: 500px; padding: .25em 0px; }
-    100% {max-height: 0px; padding: 0px; }
-
-}
-
-/* Standard syntax */
-@keyframes hide-anim {
-    0% {max-height: 500px; padding: .25em 0px; }
-    100% {max-height: 0px; padding: 0px; }
+    display: none;
 }
 
 /* The switch - the box around the slider */
@@ -118,7 +205,8 @@
     position: absolute;
     content: "2D";
     height: 26px;
-    font: 14px Lato light;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
     text-align: center;
     width: 26px;
     left: 2px;
@@ -149,4 +237,5 @@ body {
     margin: 0px;
     overflow: hidden;
     -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
 }

@@ -6,7 +6,7 @@ import { MorphReplace } from 'react-svg-morph';
 class Connect extends React.Component {
     render() {
         return (
-            <svg width="24" height="24" viewBox="0 0 300 300">
+            <svg width="20" height="20" viewBox="0 0 300 300">
                 <path d="   M150, 300 L300 150 L150 0L0 150L150 300 "/>
             </svg>
         );
@@ -16,7 +16,7 @@ class Connect extends React.Component {
 class Disconnect extends React.Component {
     render() {
         return (
-            <svg width="24" height="24" viewBox="0 0 300 300">
+            <svg width="20" height="20" viewBox="0 0 300 300">
                 <path d="   M150, 150 L0, 300Z
                             M150, 150 L300, 0Z
                             M150, 150 L0, 0Z
@@ -44,7 +44,7 @@ class Field extends React.Component {
             if (!this.state.showDisconnect)
                 this.startConnection()
             else {
-                this.props.dispatch(Actions.removeConnections(this.props.type, this.props.node, this.props.field));
+                this.props.dispatch(Actions.removeConnections(this.props.node, this.props.type, this.props.field));
                 this.setState({ showDisconnect: false});
             }
         else
@@ -69,6 +69,7 @@ class Field extends React.Component {
                         Node: this.props.Selected.Node,
                         Field: this.props.Selected.Field
                     }
+
                     if (this.props.Selected.Type == "Input")
                         this.props.dispatch(Actions.addConnection(Selected, {
                             Node: parseInt(el.parentElement.parentElement.id.replace( /^\D+/g, '')),

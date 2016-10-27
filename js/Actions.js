@@ -1,10 +1,11 @@
-const addNode = (nodeType, pos, input, output) =>
+const addNode = (nodeType, pos, input, output, height) =>
     ({
         type: 'ADD_NODE',
         nodeType: nodeType,
         pos: pos,
         input: input,
-        output: output
+        output: output,
+        height: height
     })
 const removeNode = (node, cons) =>
     ({
@@ -33,12 +34,13 @@ const stopConnecting = _ =>
         type: 'STOP_CONNECTING'
     })
 
-const updateNode = (node, inputs, outputs, cons) =>
+const updateNode = (node, inputs, outputs, height, cons) =>
     ({
         type: 'UPDATE_NODE',
         node: node,
         inputs: inputs,
         outputs: outputs,
+        height: height,
         outputFields: cons.map(con => con.Output.Field),
         connectedNodes: cons.map(con => con.Input.Node),
         connectedFields: cons.map(con => con.Input.Field)
@@ -62,7 +64,7 @@ const addConnection = (Input, Output) =>
         Input: Input,
         Output: Output
     })
-const removeConnections = (Type, Node, Field) =>
+const removeConnections = (Node, Type, Field) =>
     ({
         type: 'REMOVE_CONNECTIONS',
         Node: Node,
@@ -75,11 +77,19 @@ const toggleDragEditor = () =>
         type: 'TOGGLE_DRAG_EDITOR'
     })
 
-const setProgram = (Vertex, Fragment) =>
+const setProgram = (Height, R, G, B) =>
     ({
         type: 'SET_PROGRAM',
-        Vertex: Vertex,
-        Fragment: Fragment
+        Height: Height,
+        R: R,
+        G: G,
+        B: B
+    })
+
+const setTopoWidth = (Width) =>
+    ({
+        type: 'SET_WIDTH',
+        Width: Width
     })
 
 const switchView = () =>
