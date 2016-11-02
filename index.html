@@ -226,9 +226,8 @@
                 float height = density(P);
                 height += 1.0;
                 /*height /= 2.0;*/
-                float f  = fract (height * 5.0);
-                float df = fwidth(height * 5.0);
-
+                float f  = fract (height * 20.0);
+                float df = fwidth(height * 25.0);
                 float g = smoothstep(df * 0.5, df * 1.0, f);
 
                 float c = g;
